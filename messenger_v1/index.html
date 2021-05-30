@@ -4,9 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="messenger_v1/style.css">
     <title>Мессенджер v1</title>
 </head>
 <body>
-    Мессенджер v1
+    <div id="messages-box">
+        <div class="message">
+            <span class="author">User_1</span>
+            <div class="text">ДРОМ САМЫЙ ЛУЧШИЙ САЙТ!!!11!1 Я ПРОСТО ТАЩУСБ</div>
+        </div>
+        <div class="message">
+            <span class="author">User_2</span>
+            <div class="text">Согласен, я купил там крутую тачку и очень дешево!</div>
+        </div>
+        <div class="message">
+            <span class="author">User_1</span>
+            <div class="text">ДААААА, ДРОМ ЛУЧШИЙ!!1! ААААААА!1!11!!!</div>
+        </div>
+    </div>
+
+    <div id="message-create">
+        <div id="auth">
+            <label for="login">Логин:</label>
+            <input type="text" id="login">
+            <label for="password">Пароль: </label>
+            <input type="password" id="password">
+            <input type="button" value="Войти" onclick="authorize()">
+        </div>
+
+        <div id="new-message" class="disabled">
+            <input type="text" id="text">
+        </div>
+    </div>
+
+    <script>
+        function authorize() {
+            let login = document.getElementById('login').value;
+            let password = document.getElementById('password').value;
+            let url = new URL(window.location.href);
+            url.searchParams.set('login', login);
+            url.searchParams.set('password', password);
+            window.location.href = url;
+        }
+    </script>
 </body>
 </html>

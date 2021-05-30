@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#messages-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+    min-height: 80%;
+    margin: 0 auto;
+}
+
+.message {
+    width: 100%;
+    margin: 12px;
+    padding: 12px 32px;
+    border-radius: 32px;
+    background-color: cornsilk;
+}
+
+.author {
+    font-weight: 700;
+    padding-bottom: 8px;
+}
+
+#message-create {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+    bottom: 0;
+    background-color: darkgray;
+}
+
+#auth {
+    display: flex;
+    flex-direction: column;
+}
+
+.disabled {
+    display: none;
+}
