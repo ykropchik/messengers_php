@@ -11,7 +11,7 @@ html, body {
 
 #messages-box {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: flex-start;
     width: 50%;
     min-height: 80%;

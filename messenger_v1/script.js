@@ -17,7 +17,7 @@ function sendMessage() {
         $.ajax({
             url: window.location.href + "&text=" + $('#newText').val(),
             complete: () => {
-                // window.location.href = window.location.href;
+                document.location.reload();
             }
         })
     }

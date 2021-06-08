@@ -23,15 +23,15 @@
         $login = $_GET['login'];
         $password = $_GET['password'];
         $text = $_GET['text'];
-        if (isset($login) && isset($password)) {
+        if (isset($login) && isset($password) && isset($text)) {
             if (isset($users[$login])) {
                 if($users[$login] == $password) {
-                    $messages = file_get_contents("messages.json");
+                    $messages = file_get_contents(__DIR__."/messages.json");
                     $parsed_messages = json_decode($messages, true);
 
                     $date = getdate();
-                    $stringDate = $date["mday"].".".$date["mon"].".".$date["year"]." ".$date["hours"].":".$date["minutes"];
-
+                    //$stringDate = $date["mday"].".".$date["mon"].".".$date["year"]." ".$date["hours"].":".$date["minutes"];
+                    $stringDate = date("d.m.y H:i");
                     $newMessage = [
                         "author" => $login,
                         "date" => $stringDate,
@@ -41,7 +41,8 @@
                     array_push($parsed_messages, $newMessage);
                     //fwrite($file, json_encode($parsed_messages));
                     //fclose($file);
-                    file_put_contents(__DIR__."/messages.json", json_encode($parsed_messages));
+                    // var_dump(json_encode($parsed_messages));
+                    file_put_contents(__DIR__."/messages.json", json_encode($parsed_messages, JSON_UNESCAPED_UNICODE));
                 }
             }
         }
@@ -53,6 +54,7 @@
             for ($i = 0; $i < count($parsed_messages); $i++) {
                 echo    '<div class="message">
                             <span class="author">'.$parsed_messages[$i]['author'].'</span>
+                            <span class="date">'.$parsed_messages[$i]['date'].'</span>
                             <div class="text">'.$parsed_messages[$i]['text'].'</div>
                         </div>';
             }
