@@ -17,12 +17,18 @@
         <div class="card">
             <span class="card-title">Лаб 1</span>
             <span class="card-text">Простой мессенджер с использованием php, который записывает информацию в json файл</span>
-            <button class="card-btn">Перейти</button>
+            <a href="/messenger"><button class="card-btn">Перейти</button></a>
+        </div>
+
+        <div class="card">
+            <span class="card-title">Лаб 2</span>
+            <span class="card-text">Простая страница с использованием php, composer и twig</span>
+            <a href="/twig"><button class="card-btn">Перейти</button></a>
         </div>
     </div>
 
     <script type="text/javascript">
-        VanillaTilt.init(document.querySelector(".card"), {
+        VanillaTilt.init(document.querySelectorAll(".card"), {
             max: 15,
             speed: 400,
             perspective: 2000

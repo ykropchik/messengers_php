@@ -36,6 +36,7 @@ html, body {
     width: 128px;
     height: 128px;
     padding: 16px;
+    margin: 64px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transition: all 0.8s ease;
@@ -63,6 +64,11 @@ html, body {
     color: white;
     transform: translateY(128px);
     transition: all 1.6s ease;
+}
+
+a {
+    color: white !important;
+    text-decoration: none;
 }
 
 .card-btn {
