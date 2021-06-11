@@ -29,7 +29,6 @@
                     $messages = file_get_contents(__DIR__."/messages.json");
                     $parsed_messages = json_decode($messages, true);
 
-                    $date = getdate();
                     //$stringDate = $date["mday"].".".$date["mon"].".".$date["year"]." ".$date["hours"].":".$date["minutes"];
                     $stringDate = date("d.m.y H:i");
                     $newMessage = [

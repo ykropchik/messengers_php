@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="messenger_v1/style.css">
+    <title>Мессенджер v1</title>
+</head>
+<body>
+    <div id="messages-box">  
+        {% for message in messages %}
+            <div class="message">
+                <span class="author">{{message.author}}</span>
+                <span class="date">{{message.create_time}}</span>
+                <div class="text">{{message.message}}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="message-create">
+        {% if login %}
+            <div id="new-message">
+                <textarea type="text" id="newText"></textarea>
+                <input type="button" value="Отправить" onclick="sendMessage()">
+            </div>
+        {% else %}
+            <div id="auth">
+                <label for="login">Логин:</label>
+                <input type="text" id="login">
+                <label for="password">Пароль: </label>
+                <input type="password" id="password">
+                <input type="button" value="Войти" onclick="authorize()">
+                {% if loginError %}
+                    <span id="error">Неверный логин или пароль</span>
+                {% endif %}
+            </div>
+        {% endif %}
+
+    </div>
+    <script src="messenger_v1/script.js"></script>
+</body>
+</html>

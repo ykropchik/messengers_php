@@ -1,0 +1,12 @@
+{
+    "name": "root/messenger_v2",
+    "require": {
+        "twig/twig": "^3.3"
+    },
+    "authors": [
+        {
+            "name": "ykropchik",
+            "email": "ykropchik22@gmail.com"
+        }
+    ]
+}
