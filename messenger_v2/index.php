@@ -1,13 +1,14 @@
 <?php
     require_once __DIR__.'/vendor/autoload.php';
     require_once __DIR__.'/mysql-config.php';
+    require_once __DIR__.'/user.php';
     
     $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/templates');
     $twig = new \Twig\Environment($loader);
     $template = $twig->load('index.html');
 
     try {
-        $db = new PDO("mysql:host=localhost;dbname={$dbName}", $dbUser, $dbUserPassword);        
+        $db = new PDO("mysql:host=localhost;dbname={$dbName}", $dbUser, $dbUserPassword);      
     } catch (PDOException $e) {
         print "Error!: " . $e->getMessage();
         die();
@@ -21,18 +22,11 @@
     $loginError = false;
 
     if (isset($login) && isset($password)) {
-        $sqlReq = $db->prepare("SELECT * FROM users WHERE `login` = ?");
-        $sqlReq->execute([$login]);
-        $rows = $sqlReq->fetchAll();
-        if (count($rows) != 0) {
-            $sqlReq = $db->prepare("SELECT * FROM users WHERE `login` = :login and `password` = :password");
-            $sqlReq->execute(["login" => $login, "password" => $password]);
-            $rows = $sqlReq->fetchAll();
-            if (count($rows) != 0) {
-                $isLogin = true;
-            } else {
-                $loginError = true;
-            }
+        $user = new User(NULL, NULL);
+        $foundedUser = $user->getByLogin($login, $db);
+
+        if ($foundedUser->getLogin() === $login && $foundedUser->getPassword() === $password) {
+            $isLogin = true;
         } else {
             $loginError = true;
         }
