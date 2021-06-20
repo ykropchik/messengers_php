@@ -2,6 +2,7 @@
     require_once __DIR__.'/vendor/autoload.php';
     require_once __DIR__.'/mysql-config.php';
     require_once __DIR__.'/user.php';
+    require_once __DIR__.'/message.php';
     
     $loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/templates');
     $twig = new \Twig\Environment($loader);
@@ -13,6 +14,8 @@
         print "Error!: " . $e->getMessage();
         die();
     }
+
+    $mapper = new MessageMapper($db);
 
     $login = $_GET['login'];
     $password = $_GET['password'];
@@ -33,12 +36,9 @@
     }
 
     if ($isLogin && isset($text)) {
-        $sqlReq = $db->prepare("INSERT INTO `messages` (`create_time`, `author`, `message`) VALUES (:time, :author, :message)");
-        $sqlReq->execute(["time" => date("y.m.d H:i"), "author" => $login, "message" => $text]);
+        $newMessage = new Message($login, date("y.m.d H:i"), $text);
+        $mapper->saveMessage($newMessage);
     }
-
-
-    echo $template->render(['messages' => getMessages($db), 'login' => $isLogin, 'loginError' => $loginError]);
 
     function getMessages($db) {
         $sqlReq = $db->prepare("SELECT * FROM messages");
@@ -46,5 +46,7 @@
         $rows = $sqlReq->fetchAll();
         return($rows);
     }
+
+    echo $template->render(['messages' => $mapper->getAllMessages(), 'login' => $isLogin, 'loginError' => $loginError]);
 ?>
 
