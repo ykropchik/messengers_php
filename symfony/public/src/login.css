@@ -1,0 +1,211 @@
+/*
+    light shades: #E7D8D1   rgba(231, 216, 209, 1);
+    Light accent: #A53E54    rgba(165, 62, 84, 1);
+    Main brand color: #816C80   rgba(129, 108, 128, 1);
+    Dark accent: #313048    rgba(49, 48, 72, 1);
+    Dark shades: #1A161A    rgba(26, 22, 26, 1);
+ */
+
+* {
+    box-sizing: border-box;
+    font: 600 16px/18px 'Open Sans', sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #c8c8c8;
+}
+
+#login-wrap {
+    position: relative;
+    max-width: 525px;
+    min-height: 670px;
+    width: 100%;
+    background: url('/img/login-background.jpg') center no-repeat;
+    background-size: cover;
+    box-shadow: 0px 0px 50px 19px rgba(34, 60, 80, 0.13);
+}
+
+#login-layout {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(49, 48, 72, 0.75);
+    padding: 90px 70px 50px 70px;
+}
+
+#login-label {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+form {
+    width: 100%;
+    height: auto;
+}
+
+.login-input-group {
+    position: relative;
+    min-height: 65px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.login-input-group label {
+    display: block;
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 6px;
+    margin-left: 32px;
+}
+
+#login-layout button, #login-layout input {
+    width: 100%;
+    background: rgba(255, 255, 255, .1);
+    outline: none;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+}
+
+.login-input-group > #login-button {
+    margin-top: 45px;
+}
+
+#login-button {
+    overflow: hidden;
+    background: #A53E54 !important;
+    cursor: pointer;
+}
+
+.error-label {
+    color: rgba(237, 67, 55, 0.9) !important;
+}
+
+#error-auth {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.error-anim {
+    animation: shake 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        background-color: rgba(255, 255, 255, .1);
+    }
+    20%,
+    60% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0);
+        background-color: rgba(237, 67, 55, 0.2);
+    }
+    40%,
+    80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0);
+        background-color: rgba(237, 67, 55, 0.2);
+    }
+}
+
+#register {
+    margin-top: auto;
+    font-weight: 100;
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+.login-input-group:last-of-type > div {
+    display: flex;
+    align-items: center;
+}
+
+label[for="registration_form_agreeTerms"] {
+    display: inline-block;
+    width: auto !important;
+    margin-left: 0;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    width: auto !important;
+}
+
+/* Spinner */
+
+#spinner {
+    display: block;
+    position: relative;
+    height: 30px;
+    width: 100px;
+    margin: 50px auto;
+}
+
+#spinner span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(165, 62, 84, 0.25);
+    border-radius: 50%;
+    -webkit-animation: spinner 1s infinite ease-in-out;
+    animation: spinner 1s infinite ease-in-out;
+}
+
+#spinner span:nth-child(1) {
+    left: 0px;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+#spinner span:nth-child(2) {
+    left: 25px;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+#spinner span:nth-child(3) {
+    left: 50px;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+#spinner span:nth-child(4) {
+    left: 75px;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+}
+
+@keyframes spinner {
+    0% {
+        transform: translateY(0px);
+        background: rgba(165, 62, 84, 0.25);
+    }
+    50% {
+        transform: translateY(10px);
+        background: rgba(165, 62, 84, 1);
+    }
+    100% {
+        transform: translateY(0px);
+        background: rgba(165, 62, 84, 0.25);
+    }
+}
